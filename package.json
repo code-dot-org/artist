@@ -1,0 +1,15 @@
+{
+  "name": "@code-dot-org/artist",
+  "version": "0.0.1",
+  "description": "Turtle graphics engine for the Artist app type.",
+  "main": "artist.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:code-dot-org/artist.git"
+  },
+  "author": "Code.org Contributors",
+  "license": "SEE LICENSE IN LICENSE"
+}
