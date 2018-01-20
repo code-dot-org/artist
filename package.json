@@ -11,5 +11,8 @@
     "url": "git@github.com:code-dot-org/artist.git"
   },
   "author": "Code.org Contributors",
-  "license": "SEE LICENSE IN LICENSE"
+  "license": "SEE LICENSE IN LICENSE",
+  "devDependencies": {
+    "webpack": "^3.10.0"
+  }
 }
