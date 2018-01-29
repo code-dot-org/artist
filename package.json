@@ -4,7 +4,7 @@
   "description": "Turtle graphics engine for the Artist app type.",
   "main": "artist.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack && cp playground.html build/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
