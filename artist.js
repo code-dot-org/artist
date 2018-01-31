@@ -100,7 +100,7 @@ module.exports = class Visualization {
       img.onload = () => resolve();
       img.onerror = () => resolve();
 
-      img.src = 'assets/avatar.png';
+      img.src = require('./assets/avatar.png');
       this.avatarImage.img = img;
     });
   }
