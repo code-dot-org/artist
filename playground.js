@@ -2,6 +2,12 @@ const Visualization = require("./artist.js");
 
 window.viz = new Visualization({
   lineStylePatternOptions: [],
+  linePatterns: {
+    rainbowLine: require("./assets/patterns/rainbow.png"),
+    ropeLine: require("./assets/patterns/rope.png"),
+    squigglyLine: require("./assets/patterns/squiggly.png"),
+    swirlyLine: require("./assets/patterns/swirly.png"),
+  },
 });
 
 viz.preload().then(() => {

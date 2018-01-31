@@ -147,9 +147,7 @@ module.exports = class Visualization {
    *         if there are no images to load).
    */
   preloadAllPatternImages() {
-    const loadPattern = patternOption => new Promise(resolve => {
-      const pattern = patternOption[1];
-
+    const loadPattern = pattern => new Promise(resolve => {
       if (this.linePatterns[pattern]) {
         const img = new Image();
 
@@ -163,12 +161,7 @@ module.exports = class Visualization {
       }
     });
 
-    const patternOptions = (this.lineStylePatternOptions);
-    if (patternOptions.length) {
-      return Promise.all(patternOptions.map(loadPattern));
-    } else {
-      return Promise.resolve();
-    }
+    return Promise.all(Object.keys(this.linePatterns).map(loadPattern));
   };
 
   /**
