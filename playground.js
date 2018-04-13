@@ -1,6 +1,15 @@
 const Visualization = require("./artist.js");
 
 window.viz = new Visualization({
+  isFrozenSkin: false,
+  avatar: {
+    src: require('./assets/avatar.png'),
+    width: 70,
+    height: 51,
+    numHeadings: 180,
+    numFrames: 1,
+    visible: true,
+  },
   lineStylePatternOptions: [],
   linePatterns: {
     rainbowLine: require("./assets/patterns/rainbow.png"),
@@ -10,7 +19,21 @@ window.viz = new Visualization({
   },
 });
 
-viz.preload().then(() => {
+function preload(src, target) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+
+    img.onload = () => resolve();
+    img.onerror = () => reject();
+
+    img.src = src;
+    target.image = img;
+  });
+}
+
+Promise.all([
+  preload(viz.avatar.src, viz.avatar),
+]).then(() => {
   const log = [];
   document.body.appendChild(viz.ctxDisplay.canvas);
 
