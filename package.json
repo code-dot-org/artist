@@ -6,7 +6,7 @@
   "scripts": {
     "copy:static": "cp playground.html build/index.html",
     "build": "webpack && yarn copy:static",
-    "test": "exit 0"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -15,6 +15,7 @@
   "author": "Code.org Contributors",
   "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
+    "canvas": "^1.6.10",
     "file-loader": "^1.1.6",
     "jest": "^22.4.3",
     "webpack": "^3.10.0"
