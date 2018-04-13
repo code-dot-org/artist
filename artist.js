@@ -76,7 +76,7 @@ module.exports = class Visualization {
     this.isFrozenSkin = !!options.isFrozenSkin;
     this.isK1 = !!options.isK1;
     this.decorationAnimationImage = options.decorationAnimationImage;
-    this.showDecoration = options.showDecoration;
+    this.showDecoration = options.showDecoration || (() => false);
 
     // Internal state.
     this.turtleFrame_ = 0;
@@ -211,7 +211,7 @@ module.exports = class Visualization {
     // FF on linux retains drawing of previous location of artist unless we clear
     // the canvas first.
     var style = this.ctxDisplay.fillStyle;
-    this.ctxDisplay.fillStyle = color.white;
+    this.ctxDisplay.fillStyle = 'white';
     this.ctxDisplay.clearRect(0, 0, this.ctxDisplay.canvas.width,
       this.ctxDisplay.canvas.width);
     this.ctxDisplay.fillStyle = style;
