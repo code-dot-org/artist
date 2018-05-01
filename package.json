@@ -2,7 +2,7 @@
   "name": "@code-dot-org/artist",
   "version": "0.0.1",
   "description": "Turtle graphics engine for the Artist app type.",
-  "main": "artist.js",
+  "main": "visualization.js",
   "scripts": {
     "copy:static": "cp playground.html build/index.html",
     "build": "webpack && yarn copy:static",

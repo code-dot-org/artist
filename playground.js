@@ -1,4 +1,4 @@
-const Visualization = require("./artist.js");
+const Visualization = require("./visualization.js");
 
 window.viz = new Visualization({
   isFrozenSkin: false,
