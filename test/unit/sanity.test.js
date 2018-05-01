@@ -1,4 +1,4 @@
-const Visualization = require('../../artist.js');
+const Visualization = require('../../visualization.js');
 
 test('sanity', () => {
   const viz = new Visualization();

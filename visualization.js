@@ -22,8 +22,6 @@
  * @author fraser@google.com (Neil Fraser)
  */
 
-var color = require("../util/color");
-
 const CANVAS_HEIGHT = 400;
 const CANVAS_WIDTH = 400;
 
@@ -67,7 +65,7 @@ var ELSA_DECORATION_DETAILS = [
   { x: 10, when: "after" }
 ];
 
-export default class Visualization {
+module.exports = class Visualization {
   constructor(options = {}) {
     this.x = DEFAULT_X;
     this.y = DEFAULT_Y;
@@ -219,7 +217,7 @@ export default class Visualization {
     // FF on linux retains drawing of previous location of artist unless we clear
     // the canvas first.
     var style = this.ctxDisplay.fillStyle;
-    this.ctxDisplay.fillStyle = color.white;
+    this.ctxDisplay.fillStyle = '#fff';
     this.ctxDisplay.clearRect(0, 0, this.ctxDisplay.canvas.width,
       this.ctxDisplay.canvas.width);
     this.ctxDisplay.fillStyle = style;
