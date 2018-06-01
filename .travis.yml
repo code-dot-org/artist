@@ -12,10 +12,10 @@ script:
 notifications:
   email: false
 
-before_deploy: yarn build
+before_deploy: yarn run build:demo
 
 deploy:
-  local_dir: build
+  local_dir: demo/dist
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN

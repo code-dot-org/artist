@@ -4,8 +4,8 @@
   "description": "Turtle graphics engine for the Artist app type.",
   "main": "visualization.js",
   "scripts": {
-    "copy:static": "cp playground.html build/index.html",
-    "build": "webpack && yarn copy:static",
+    "copy:static": "cp demo/playground.html demo/dist/index.html",
+    "build:demo": "webpack --config demo/webpack.config.js && yarn copy:static",
     "test": "jest"
   },
   "repository": {
