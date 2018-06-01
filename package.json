@@ -5,7 +5,7 @@
   "main": "visualization.js",
   "scripts": {
     "copy:static": "cp demo/playground.html demo/dist/index.html",
-    "build:demo": "webpack --config demo/webpack.config.js && yarn copy:static",
+    "build:demo": "webpack -p --config demo/webpack.config.js && yarn copy:static",
     "test": "jest"
   },
   "repository": {
@@ -19,7 +19,8 @@
     "codecov": "^3.0.0",
     "file-loader": "^1.1.6",
     "jest": "^22.4.3",
-    "webpack": "^3.10.0"
+    "webpack": "^4.10.2",
+    "webpack-cli": "^2.1.5"
   },
   "jest": {
     "collectCoverage": true
