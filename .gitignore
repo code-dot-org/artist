@@ -40,6 +40,7 @@ Icon?
 
 # Build files
 /demo/dist/*
+/dist
 
 # VScode settings
 /.vscode

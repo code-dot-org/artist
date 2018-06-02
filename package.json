@@ -1,11 +1,13 @@
 {
   "name": "@code-dot-org/artist",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Turtle graphics engine for the Artist app type.",
-  "main": "visualization.js",
+  "main": "dist/main.js",
   "scripts": {
-    "copy:static": "cp demo/playground.html demo/dist/index.html",
+    "build": "webpack -p",
     "build:demo": "webpack -p --config demo/webpack.config.js && yarn copy:static",
+    "build:dev": "webpack --progress --colors --mode=development --watch",
+    "copy:static": "cp demo/playground.html demo/dist/index.html",
     "test": "jest"
   },
   "repository": {
@@ -15,6 +17,8 @@
   "author": "Code.org Contributors",
   "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
     "canvas": "^1.6.10",
     "codecov": "^3.0.0",
     "file-loader": "^1.1.6",
