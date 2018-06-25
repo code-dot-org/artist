@@ -5,7 +5,7 @@
   "main": "dist/main.js",
   "scripts": {
     "build": "webpack -p",
-    "build:demo": "webpack -p --config demo/webpack.config.js && yarn copy:static",
+    "build:demo": "webpack -p --config demo/webpack.config.js && npm run copy:static",
     "build:dev": "webpack --progress --colors --mode=development --watch",
     "copy:static": "cp demo/playground.html demo/dist/index.html",
     "test": "jest"
