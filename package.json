@@ -1,6 +1,6 @@
 {
   "name": "@code-dot-org/artist",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Turtle graphics engine for the Artist app type.",
   "main": "dist/main.js",
   "scripts": {
