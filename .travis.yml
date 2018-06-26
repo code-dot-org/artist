@@ -1,21 +1,21 @@
 language: node_js
 node_js: 6
-cache: yarn
+cache: npm
 
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++
 
 script:
-  - yarn test && codecov
+  - npm run test && codecov
 
 notifications:
   email: false
 
-before_deploy: yarn build
+before_deploy: npm run build:demo
 
 deploy:
-  local_dir: build
+  local_dir: demo/dist
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
