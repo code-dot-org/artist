@@ -1,9 +1,11 @@
 {
   "name": "@code-dot-org/artist",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Turtle graphics engine for the Artist app type.",
   "main": "dist/main.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "webpack -p",
     "build:demo": "webpack -p --config demo/webpack.config.js && npm run copy:static",
