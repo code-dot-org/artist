@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "description": "Turtle graphics engine for the Artist app type.",
   "main": "dist/main.js",
+  "files": ["dist"],
   "scripts": {
     "build": "webpack -p",
     "build:demo": "webpack -p --config demo/webpack.config.js && npm run copy:static",
