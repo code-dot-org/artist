@@ -1,5 +1,5 @@
 /**
- * Blockly Demo: Turtle Graphics
+ * Blockly Demo: Artist Graphics
  *
  * Copyright 2012 Google Inc.
  * http://blockly.googlecode.com/
@@ -18,7 +18,7 @@
  */
 
 /**
- * @fileoverview Demonstration of Blockly: Turtle Graphics.
+ * @fileoverview Demonstration of Blockly: Artist Graphics.
  * @author fraser@google.com (Neil Fraser)
  */
 
@@ -42,7 +42,7 @@ var JOINT_SEGMENT_LENGTH = 50;
 
 /**
  * An x offset against the sprite edge where the decoration should be drawn,
- * along with whether it should be drawn before or after the turtle sprite itself.
+ * along with whether it should be drawn before or after the artist sprite itself.
  */
 var ELSA_DECORATION_DETAILS = [
   { x: 15, when: "after" },
@@ -79,7 +79,7 @@ module.exports = class Visualization {
     this.showDecoration = options.showDecoration;
 
     // Internal state.
-    this.turtleFrame_ = 0;
+    this.artistFrame_ = 0;
     this.isPredrawing_ = false;
     this.currentPathPattern = new Image();
     this.isDrawingWithPattern = false;
@@ -107,8 +107,8 @@ module.exports = class Visualization {
     this.ctxDisplay = this.displayCanvas.getContext('2d');
   }
 
-  resetTurtleFrame() {
-    this.turtleFrame_ = 0;
+  resetArtistFrame() {
+    this.artistFrame_ = 0;
   }
 
   // Helper for creating canvas elements.
@@ -121,9 +121,9 @@ module.exports = class Visualization {
   }
 
   /**
-   * Draw the turtle image based on this.x, this.y, and this.heading.
+   * Draw the artist image based on this.x, this.y, and this.heading.
    */
-  drawTurtle() {
+  drawArtist() {
     if (!this.avatar.visible) {
       return;
     }
@@ -139,8 +139,8 @@ module.exports = class Visualization {
       index = (index + this.avatar.numHeadings / 2) % this.avatar.numHeadings;
     }
     var sourceX = this.avatar.width * index;
-    var sourceY = this.avatar.height * this.turtleFrame_;
-    this.turtleFrame_ = (this.turtleFrame_ + 1) % this.avatar.numFrames;
+    var sourceY = this.avatar.height * this.artistFrame_;
+    this.artistFrame_ = (this.artistFrame_ + 1) % this.avatar.numFrames;
 
     var sourceWidth = this.avatar.width;
     var sourceHeight = this.avatar.height;
@@ -178,7 +178,7 @@ module.exports = class Visualization {
    */
   drawDecorationAnimation(when) {
     if (this.showDecoration()) {
-      var frameIndex = (this.turtleFrame_ + 10) % decorationAnimationNumFrames;
+      var frameIndex = (this.artistFrame_ + 10) % decorationAnimationNumFrames;
 
       var angleIndex = Math.floor(this.heading * this.avatar.numHeadings / 360);
 
@@ -211,7 +211,7 @@ module.exports = class Visualization {
   }
 
   /**
-   * Copy the scratch canvas to the display canvas. Add a turtle marker.
+   * Copy the scratch canvas to the display canvas. Add an artist marker.
    */
   display() {
     // FF on linux retains drawing of previous location of artist unless we clear
@@ -248,8 +248,8 @@ module.exports = class Visualization {
     this.ctxDisplay.globalCompositeOperation = 'source-over';
     this.ctxDisplay.drawImage(this.ctxScratch.canvas, 0, 0);
 
-    // Draw the turtle.
-    this.drawTurtle();
+    // Draw the artist.
+    this.drawArtist();
   }
 
   jumpTo(pos) {
@@ -267,7 +267,7 @@ module.exports = class Visualization {
     this.ctxScratch.arc(x, y, radius, 0, 2 * Math.PI);
   }
 
-  drawToTurtle_(distance) {
+  drawToArtist_(distance) {
     var isDot = (distance === 0);
     if (isDot) {
       // WebKit (unlike Gecko) draws nothing for a zero-length line, so draw a very short line.
@@ -291,13 +291,13 @@ module.exports = class Visualization {
   }
 
   reset(startDirection = DEFAULT_DIRECTION, initialX = DEFAULT_X, initialY = DEFAULT_Y) {
-    // Standard starting location and heading of the turtle.
+    // Standard starting location and heading of the artist.
     this.x = initialX;
     this.y = initialY;
     this.heading = startDirection;
     this.penDownValue = true;
     this.avatar.visible = true;
-    this.resetTurtleFrame();
+    this.resetArtistFrame();
 
     // Clear the display.
     this.ctxScratch.canvas.width = this.ctxScratch.canvas.width;
@@ -376,7 +376,7 @@ module.exports = class Visualization {
     var segmentLength = JOINT_SEGMENT_LENGTH * (isDiagonal ? Math.sqrt(2) : 1);
 
     if (remainingDistance >= segmentLength) {
-      this.drawJointAtTurtle_();
+      this.drawJointAtArtist_();
     }
 
     while (remainingDistance > 0) {
@@ -388,7 +388,7 @@ module.exports = class Visualization {
       this.drawForwardLine_(currentSegmentLength);
 
       if (enoughForFullSegment) {
-        this.drawJointAtTurtle_();
+        this.drawJointAtArtist_();
       }
     }
   }
@@ -398,13 +398,13 @@ module.exports = class Visualization {
       this.ctxScratch.beginPath();
       this.ctxScratch.moveTo(this.stepStartX, this.stepStartY);
       this.jumpForward(distance);
-      this.drawToTurtle_(distance);
+      this.drawToArtist_(distance);
       this.ctxScratch.stroke();
     } else {
       this.ctxScratch.beginPath();
       this.ctxScratch.moveTo(this.x, this.y);
       this.jumpForward(distance);
-      this.drawToTurtle_(distance);
+      this.drawToArtist_(distance);
       this.ctxScratch.stroke();
     }
   }
@@ -425,7 +425,7 @@ module.exports = class Visualization {
       this.ctxPattern.save();
       this.ctxPattern.translate(startX, startY);
       // increment the angle and rotate the image.
-      // Need to subtract 90 to accomodate difference in canvas vs. Turtle direction
+      // Need to subtract 90 to accomodate difference in canvas vs. Artist direction
       this.ctxPattern.rotate(this.degreesToRadians_(this.heading - 90));
 
       var clipSize;
@@ -462,7 +462,7 @@ module.exports = class Visualization {
       this.ctxScratch.save();
       this.ctxScratch.translate(startX, startY);
       // increment the angle and rotate the image.
-      // Need to subtract 90 to accommodate difference in canvas vs. Turtle direction
+      // Need to subtract 90 to accommodate difference in canvas vs. Artist direction
       this.ctxScratch.rotate(this.degreesToRadians_(this.heading - 90));
 
       if ((distance > 0) && (img.width !== 0)) {
@@ -493,7 +493,7 @@ module.exports = class Visualization {
     return this.isK1 && !this.isPredrawing_;
   }
 
-  drawJointAtTurtle_() {
+  drawJointAtArtist_() {
     this.ctxScratch.beginPath();
     this.ctxScratch.moveTo(this.x, this.y);
     this.circleAt_(this.x, this.y, JOINT_RADIUS);
